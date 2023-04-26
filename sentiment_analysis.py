@@ -1,5 +1,6 @@
 from textblob import TextBlob
 from flask import Flask, request, jsonify
+import json
 from mocked_data import MOCKED_DATA
 import requests
 
@@ -21,8 +22,8 @@ def news_analyses():
 
 @app.route("/v1alpha/newsanalyses", methods=['GET'])
 def news_mock_analyses():
-    data = MOCKED_DATA["results"]
-    result = [analyse_sentiment(new["title"]) for new in data]
+    data = json.loads(MOCKED_DATA)
+    result = [analyse_sentiment(new["title"]) for new in data["results"]]
     return result
 
 if __name__ == '__main__':

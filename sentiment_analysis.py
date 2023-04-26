@@ -20,7 +20,7 @@ def news_analyses():
     return result
 
 @app.route("/v1alpha/newsanalyses", methods=['GET'])
-def news_analyses():
+def news_mock_analyses():
     data = MOCKED_DATA["results"]
     result = [analyse_sentiment(new["title"]) for new in data]
     return result

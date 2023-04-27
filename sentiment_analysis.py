@@ -40,7 +40,7 @@ def analyse_sentiment(sentences):
 
 @app.route("/v1/newsanalyses", methods=['GET'])
 def news_analyses():
-    raw = requests.get("https://newsdata.io/api/1/news?apikey=pub_212338a677fdfb5c0428f68e4e54e2f9e4e73&country=ru&language=ru")
+    raw = requests.get("https://newsdata/api/1/news?apikey=pub_212338a677fdfb5c0428f68e4e54e2f9e4e73&country=ru&language=ru")
     data = raw.json()["results"]
     titles = [new["title"] for new in data]
     result = analyse_sentiment(titles)

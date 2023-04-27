@@ -42,7 +42,7 @@ def analyse_sentiment(sentences):
 def news_analyses():
     raw = requests.get("https://newsdata.io/api/1/news?apikey=pub_212338a677fdfb5c0428f68e4e54e2f9e4e73&country=ru&language=ru")
     data = raw.json()["results"]
-    titles = [new["title"] for new in data["results"]]
+    titles = [new["title"] for new in data]
     result = analyse_sentiment(titles)
     return jsonify(result)
 
